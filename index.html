@@ -14,8 +14,13 @@
 <body>
 
     <!-- 1. STICKY GLOBAL NAV -->
-    <header class="globalnav">
-        <nav class="globalnav-content">
+    <header class="globalnav header-wrapper">
+        <nav class="globalnav-content internal-wrapper header-links-wrapper">
+            <input class="nav-toggle" type="checkbox" id="nav-toggle">
+            <label class="nav-toggle-label" for="nav-toggle" aria-label="Open navigation">
+                <i class="fa-solid fa-bars nav-open-icon"></i>
+                <i class="fa-solid fa-xmark nav-close-icon"></i>
+            </label>
             <ul class="globalnav-list">
                 <li class="nav-item"><a href="#" class="globalnav-link globalnav-link-apple" aria-label="Apple"><i class="fa-brands fa-apple"></i></a></li>
                 <li class="nav-item"><a href="#" class="globalnav-link">Store</a></li>
@@ -36,7 +41,7 @@
     </header>
 
     <!-- 2. ANNOUNCEMENT RIBBON -->
-    <div class="ribbon">
+    <div class="ribbon donation-bar-wrapper">
         <div class="ribbon-content">
             <p>Get up to $650 in credit when you trade in iPhone 11 or higher. <a href="#" class="ribbon-link">Shop iPhone <i class="fa-solid fa-chevron-right"></i></a></p>
         </div>
@@ -54,7 +59,7 @@
                     <a href="#" class="button button-elevated">Shop</a>
                 </div>
             </div>
-            <video
+          <video
                 id="college-video"
                 class="college-video"
                 autoplay
@@ -69,9 +74,8 @@
             </video>
         </section>
 
-       
         <!-- Hero 2: iPhone Family -->
-        <section class="section-hero hero-iphone">
+        <section class="section-hero hero-iphone main-highlight-wrapper">
             <div class="tile-content">
                 <h2 class="typography-tile-headline">iPhone</h2>
                 <p class="typography-tile-subhead">Meet the latest iPhone lineup.</p>
@@ -80,13 +84,10 @@
                     <a href="#" class="button button-secondary">Shop iPhone</a>
                 </div>
             </div>
-            <div class="tile-image-wrapper">
-                <img src="./images/hero_iphone_family__be5jkzxszb1e_large.jpg" alt="iPhone lineup">
-            </div>
         </section>
 
         <!-- Hero 3: MacBook Air -->
-        <section class="section-hero hero-macbook-air">
+        <section class="section-hero hero-macbook-air second-highlight-wrapper">
             <div class="tile-content">
                 <h2 class="typography-tile-headline">MacBook Air</h2>
                 <p class="typography-tile-subhead">Now supercharged by M5.</p>
@@ -95,13 +96,10 @@
                     <a href="#" class="button button-secondary">Buy</a>
                 </div>
             </div>
-            <div class="tile-image-wrapper">
-                <img src="./images/hero_macbook_air_m5__eb1idggd120y_large.jpg" alt="MacBook Air M5">
-            </div>
         </section>
 
         <!-- 4. 2-COLUMN PROMOTIONAL GRID -->
-        <section class="section-promo">
+        <section class="section-promo fourth-highlight-wrapper">
             <div class="promo-grid-row">
                 <!-- iPad Air -->
                 <div class="promo-tile theme-light promo-ipad-air">
@@ -112,9 +110,6 @@
                             <a href="#" class="button">Learn more</a>
                             <a href="#" class="button button-secondary">Buy</a>
                         </div>
-                    </div>
-                    <div class="tile-image-wrapper">
-                        <img src="./images/promo_ipad_air_m4__bgcv7t286k8y_large.jpg" alt="iPad Air">
                     </div>
                 </div>
 
@@ -127,9 +122,6 @@
                             <a href="#" class="button">Learn more</a>
                             <a href="#" class="button button-secondary">Buy</a>
                         </div>
-                    </div>
-                    <div class="tile-image-wrapper">
-                        <img src="./images/promo_macbook_pro__c9td9w1mc8ia_large.jpg" alt="MacBook Pro">
                     </div>
                 </div>
             </div>
@@ -145,9 +137,6 @@
                             <a href="#" class="button button-secondary">Buy</a>
                         </div>
                     </div>
-                    <div class="tile-image-wrapper">
-                        <img src="./images/promo_apple_watch_series_11__gnlwqxe1jlu2_large.jpg" alt="Apple Watch Series 11">
-                    </div>
                 </div>
 
                 <!-- iPad Pro -->
@@ -159,9 +148,6 @@
                             <a href="#" class="button">Learn more</a>
                             <a href="#" class="button button-secondary">Buy</a>
                         </div>
-                    </div>
-                    <div class="tile-image-wrapper">
-                        <img src="./images/promo_ipad_pro__emtduc920o02_large.jpg" alt="iPad Pro">
                     </div>
                 </div>
             </div>
@@ -176,9 +162,6 @@
                             <a href="#" class="button">Get your estimate</a>
                         </div>
                     </div>
-                    <div class="tile-image-wrapper">
-                        <img src="./images/promo_iphone_tradein__e4hrjxmgmf0i_large.jpg" alt="Trade in your iPhone">
-                    </div>
                 </div>
 
                 <!-- Apple Card -->
@@ -191,22 +174,19 @@
                             <a href="#" class="button button-secondary">Apply now</a>
                         </div>
                     </div>
-                    <div class="tile-image-wrapper">
-                        <img src="./images/promo_apple_card__d8xz4kd4evwy_large.jpg" alt="Apple Card">
-                    </div>
                 </div>
             </div>
         </section>
 
         <!-- 5. ENDLESS ENTERTAINMENT -->
-        <section class="endless-entertainment">
+        <section class="endless-entertainment entertainment-wrapper">
             <div class="media-gallery-headline-container">
                 <h2 class="media-gallery-headline">Endless entertainment.</h2>
             </div>
 
             <!-- Apple TV+ Gallery -->
-            <div class="marquee-wrapper marquee-tv">
-                <div class="marquee-track">
+            <div class="marquee-wrapper marquee-tv carousel-scroll-wrapper">
+                <div class="marquee-track carousel-row carousel-row--big">
                     <!-- Original Set -->
                     <div class="stream-banner-card card-ted-lasso">
                         <div class="stream-banner-overlay">
@@ -258,8 +238,8 @@
             </div>
 
             <!-- Apple Family Services Gallery -->
-            <div class="marquee-wrapper marquee-services">
-                <div class="marquee-track-services">
+            <div class="marquee-wrapper marquee-services carousel-scroll-wrapper">
+                <div class="marquee-track-services carousel-row carousel-row--small">
                     <!-- Original Set -->
                     <div class="service-card card-fitness">
                         <div class="service-card-footer"><a href="#" class="button button-service-pill">Watch now</a></div>
@@ -302,7 +282,7 @@
                 </div>
             </div>
 
-          <!-- Carousel Controls & Pagination Dots -->
+            <!-- Carousel Controls & Pagination Dots -->
             <div class="carousel-controls-container">
                 <div class="carousel-dots">
                     <button class="dot" type="button" aria-label="Show entertainment item 1"></button>
@@ -315,13 +295,18 @@
                     <button class="dot" type="button" aria-label="Show entertainment item 8"></button>
                     <button class="dot" type="button" aria-label="Show entertainment item 9"></button>
                 </div>
-                <div class="carousel-control-btn" aria-label="Play"><i class="fa-solid fa-play"></i></div>
+                <input class="carousel-toggle" type="checkbox" id="entertainment-toggle">
+                <label class="carousel-control-btn" for="entertainment-toggle" aria-label="Pause or play endless entertainment gallery">
+                    <i class="fa-solid fa-pause carousel-pause-icon"></i>
+                    <i class="fa-solid fa-play carousel-play-icon"></i>
+                </label>
             </div>
         </section>
 
+    </main>
 
     <!-- 6. COMPLETE MULTI-COLUMN FOOTER DIRECTORY -->
-    <footer id="ac-globalfooter" class="ac-globalfooter">
+    <footer id="ac-globalfooter" class="ac-globalfooter footer-wrapper">
         <div class="ac-gf-content">
             <section class="ac-gf-sosumi">
                 <p>* Through August 28, 2026, Apple will donate $10 for every purchase made in the U.S. using Apple Pay on apple.com, through the Apple Store app, or at an Apple Store. Donations are limited to a maximum of one million dollars ($1,000,000). The donation goes to the National Park Foundation.</p>

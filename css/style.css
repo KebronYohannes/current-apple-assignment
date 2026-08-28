@@ -6,7 +6,6 @@
 
 html, body {
     width: 100%;
-    max-width: 100%;
     overflow-x: hidden;
     font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     background-color: #ffffff;
@@ -42,6 +41,7 @@ img {
 }
 
 .globalnav-content {
+    position: relative;
     max-width: 1024px;
     height: 100%;
     margin: 0 auto;
@@ -79,6 +79,11 @@ img {
     font-size: 15px;
 }
 
+.nav-toggle,
+.nav-toggle-label {
+    display: none;
+}
+
 /* Ribbon */
 .ribbon {
     margin-top: 44px;
@@ -114,12 +119,12 @@ img {
 }
 
 .typography-tile-headline {
-    font-size: clamp(32px, 5vw, 56px);
+    font-size: 56px;
     font-weight: 600;
 }
 
 .typography-tile-subhead {
-    font-size: clamp(17px, 2vw, 21px);
+    font-size: 21px;
     margin-top: 6px;
     line-height: 1.4;
     color: #1d1d1f;
@@ -130,24 +135,6 @@ img {
     justify-content: center;
     gap: 14px;
     margin-top: 16px;
-}
-
-.tile-image-wrapper {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-}
-
-.tile-image-wrapper img {
-    height: 100%;
-    width: auto;
-    object-fit: cover;
 }
 
 /* Back to School video hero */
@@ -227,13 +214,16 @@ img {
     align-items: center;
     text-align: center;
     overflow: hidden;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: auto 100%;
 }
 
 .theme-dark { background-color: #000000; color: #f5f5f7; }
 .theme-light { background-color: #f5f5f7; color: #1d1d1f; }
 
 .typography-promo-headline {
-    font-size: clamp(28px, 4vw, 40px);
+    font-size: 40px;
     font-weight: 600;
 }
 
@@ -243,11 +233,11 @@ img {
     margin: 6px auto 0;
     line-height: 1.35;
 }
-
 .logo-image {
+    display: block;
     max-height: 38px;
     width: auto;
-    margin-bottom: 4px;
+    margin: 0 auto 4px;
 }
 
 .promo-ipad-pro { background-color: #000000; }
@@ -257,9 +247,30 @@ img {
 .promo-tradein { background-color: #fbfbfd; }
 .promo-apple-card { background-color: #fbfbfd; }
 
+.hero-iphone {
+    background-image: url("../images/hero_iphone_family__be5jkzxszb1e_large.jpg");
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: auto 100%;
+}
+
+.hero-macbook-air {
+    background-image: url("../images/hero_macbook_air_m5__eb1idggd120y_large.jpg");
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: auto 100%;
+}
+
+.promo-ipad-air { background-image: url("../images/promo_ipad_air_m4__bgcv7t286k8y_large.jpg"); }
+.promo-macbook-pro { background-image: url("../images/promo_macbook_pro__c9td9w1mc8ia_large.jpg"); }
+.promo-watch-11 { background-image: url("../images/promo_apple_watch_series_11__gnlwqxe1jlu2_large.jpg"); }
+.promo-ipad-pro { background-image: url("../images/promo_ipad_pro__emtduc920o02_large.jpg"); }
+.promo-tradein { background-image: url("../images/promo_iphone_tradein__e4hrjxmgmf0i_large.jpg"); }
+.promo-apple-card { background-image: url("../images/promo_apple_card__d8xz4kd4evwy_large.jpg"); }
+
 /* ==========================================================================
-    PURE CSS INFINITE CIRCULAR SCROLLING MARQUEES (NO JS REQUIRED)
-    ========================================================================== */
+   PURE CSS INFINITE CIRCULAR SCROLLING MARQUEES 
+   ========================================================================== */
 .endless-entertainment {
     background-color: #f5f5f7;
     padding: 40px 0 20px;
@@ -273,30 +284,25 @@ img {
 }
 
 .media-gallery-headline {
-    font-size: clamp(28px, 4vw, 40px);
+    font-size: 40px;
     font-weight: 600;
 }
 
 .marquee-wrapper {
     width: 100%;
-    overflow-x: auto;
-    overflow-y: hidden;
+    overflow: hidden;
     position: relative;
     display: flex;
     margin-bottom: 24px;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-}
-
-.marquee-wrapper::-webkit-scrollbar {
-    display: none;
+    cursor: grab;
+    background-color: #111111;
 }
 
 .marquee-track {
     display: flex;
     gap: 16px;
     width: max-content;
+    padding: 0 max(24px, calc((100vw - 920px) / 2));
     animation: scrollTV 35s linear infinite;
 }
 
@@ -304,6 +310,7 @@ img {
     display: flex;
     gap: 16px;
     width: max-content;
+    padding: 0 max(24px, calc((100vw - 410px) / 2));
     animation: scrollServices 30s linear infinite;
 }
 
@@ -312,26 +319,32 @@ img {
     animation-play-state: paused;
 }
 
+.carousel-toggle:checked ~ .carousel-control-btn {
+    background-color: rgba(0, 0, 0, 0.16);
+}
+
+.carousel-toggle:checked ~ .carousel-control-btn .carousel-pause-icon,
+.carousel-play-icon {
+    display: none;
+}
+
+.carousel-toggle:checked ~ .carousel-control-btn .carousel-play-icon {
+    display: inline-block;
+}
+
+.endless-entertainment:has(.carousel-toggle:checked) .marquee-track,
+.endless-entertainment:has(.carousel-toggle:checked) .marquee-track-services {
+    animation-play-state: paused;
+}
+
 @keyframes scrollTV {
-    0% { transform: translateX(0); }
+    0% { transform: translateX(-10%); }
     100% { transform: translateX(-50%); }
 }
 
 @keyframes scrollServices {
-    0% { transform: translateX(0); }
+    0% { transform: translateX(-10%); }
     100% { transform: translateX(-50%); }
-}
-
-.marquee-track {
-    display: flex;
-    gap: 16px;
-    width: max-content;
-}
-
-.marquee-track-services {
-    display: flex;
-    gap: 16px;
-    width: max-content;
 }
 
 .stream-banner-card {
@@ -342,16 +355,15 @@ img {
     overflow: hidden;
     background-size: cover;
     background-position: center;
-    background-color: #111;
+    background-color: #454444;
     display: flex;
     align-items: flex-end;
-    scroll-snap-align: center;
 }
 
 .stream-banner-overlay {
     width: 100%;
     padding: 30px 40px;
-    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.85) 100%);
+    background: linear-gradient(180deg, rgba(95, 92, 92, 0) 0%, rgba(38, 37, 37, 0.85) 100%);
     display: flex;
     align-items: center;
     gap: 20px;
@@ -361,7 +373,6 @@ img {
     color: #ffffff;
     font-size: 19px;
 }
-
 .button-stream-white {
     background-color: #ffffff;
     color: #000000;
@@ -397,9 +408,7 @@ img {
     justify-content: flex-end;
     padding: 18px 22px;
     color: #ffffff;
-    scroll-snap-align: center;
 }
-
 .service-card-footer {
     display: flex;
     justify-content: flex-start;
@@ -417,65 +426,64 @@ img {
     border-radius: 980px;
 }
 
-.card-arcade           { background-image: url("../images/470x264(2).jpg"); }
-.card-fitness          { background-image: url("../images/470x264(3).jpg"); }
-.card-music            { background-image: url("../images/226x226SC.DN01.jpg"); }
-.card-sabrina          { background-image: url("../images/226x226sr.jpg"); }
-.card-bowie            { background-image: url("../images/470x264(1).jpg"); }
-.card-alist            { background-image: url("../images/226x226SC(1).DN01.jpg"); }
-.card-balatro          { background-image: url("../images/470x264(4).jpg"); }
+.card-arcade          { background-image: url("../images/470x264(2).jpg"); }
+.card-fitness         { background-image: url("../images/470x264(3).jpg"); }
+.card-music           { background-image: url("../images/226x226SC.DN01.jpg"); }
+.card-sabrina         { background-image: url("../images/226x226sr.jpg"); }
+.card-bowie           { background-image: url("../images/470x264(1).jpg"); }
+.card-alist           { background-image: url("../images/226x226SC(1).DN01.jpg"); }
+.card-balatro         { background-image: url("../images/470x264(4).jpg"); }
 .card-fitness-strength { background-image: url("../images/470x264(5).jpg"); }
 
 /* Carousel Controls & Pagination Dots */
 .carousel-controls-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    width: 100%;
-    padding: 0 max(24px, calc((100vw - 920px) / 2));
-    margin: 20px auto 30px;
+    gap: 16px;
+    margin-top: 24px;
+    padding-bottom: 10px;
 }
 
 .carousel-dots {
     display: flex;
-    justify-content: center;
-    gap: 8px;
     align-items: center;
-    margin: 0 auto;
+    gap: 8px;
 }
 
-.dot {
+.carousel-dots .dot {
     width: 6px;
     height: 6px;
     border-radius: 50%;
     background-color: rgba(0, 0, 0, 0.25);
-    border: none;
+    display: inline-block;
+    border: 0;
     padding: 0;
     cursor: pointer;
-    transition: background-color 0.3s ease, width 0.3s ease;
 }
 
-.dot.active {
-    width: 18px;
-    border-radius: 3px;
-    background-color: rgba(0, 0, 0, 0.75);
+.carousel-dots .dot.active {
+    width: 24px;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
 .carousel-control-btn {
-    cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.06);
-    border: none;
+    width: 24px;
+    height: 24px;
     border-radius: 50%;
-    width: 28px;
-    height: 28px;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.08);
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 10px;
     display: flex;
-    align-items: center;
     justify-content: center;
-    font-size: 11px;
-    color: #1d1d1f;
+    align-items: center;
 }
 
-/*FOOTER */
+/* ==========================================================================
+   FOOTER DIRECTORY
+   ========================================================================== */
 .ac-globalfooter {
     background-color: #f5f5f7;
     color: rgba(0, 0, 0, 0.56);
@@ -524,7 +532,6 @@ img {
     display: flex;
     flex-direction: column;
 }
-
 .ac-gf-directory-column-section {
     margin-bottom: 20px;
 }
@@ -587,83 +594,238 @@ img {
     text-decoration: underline;
 }
 
-/* Responsive Overrides & Media Queries */
 @media (max-width: 768px) {
+    .globalnav {
+        height: 48px;
+    }
+
+    .globalnav-content {
+        padding: 0 12px;
+    }
+
+    .globalnav-list {
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .globalnav-list .nav-item:not(:first-child) {
+        display: none;
+    }
+
+    .globalnav-list .globalnav-link-apple {
+        height: 48px;
+        padding: 0 10px;
+        font-size: 18px;
+    }
+
+    .nav-toggle-label {
+        display: flex;
+        position: absolute;
+        top: 0;
+        right: 12px;
+        width: 40px;
+        height: 48px;
+        align-items: center;
+        justify-content: center;
+        color: #1d1d1f;
+        cursor: pointer;
+        font-size: 18px;
+        z-index: 2;
+    }
+
+    .nav-close-icon {
+        display: none;
+    }
+
+    .nav-toggle:checked + .nav-toggle-label .nav-open-icon {
+        display: none;
+    }
+
+    .nav-toggle:checked + .nav-toggle-label .nav-close-icon {
+        display: inline-block;
+    }
+
+    .nav-toggle:checked ~ .globalnav-list {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+        gap: 2px;
+        height: auto;
+        padding: 58px 0 20px;
+    }
+
+    .nav-toggle:checked ~ .globalnav-list .nav-item {
+        display: block;
+    }
+
+    .nav-toggle:checked ~ .globalnav-list .globalnav-link {
+        height: 40px;
+        padding: 0 16px;
+        font-size: 15px;
+        border-radius: 6px;
+    }
+
+    .ribbon {
+        margin-top: 48px;
+        padding: 10px 16px;
+        font-size: 12px;
+        line-height: 1.35;
+    }
+
+    .globalnav:has(.nav-toggle:checked) {
+        height: 100vh;
+        overflow-y: auto;
+    }
+
+    .section-hero,
+    .hero-bts {
+        height: 560px;
+        margin-bottom: 8px;
+    }
+
+    .tile-content {
+        width: 100%;
+        padding: 36px 16px 0;
+    }
+
+    .typography-tile-headline {
+        font-size: clamp(36px, 10vw, 48px);
+    }
+
+    .typography-tile-subhead {
+        font-size: 17px;
+    }
+
+    .typography-tile-subhead br,
+    .typography-promo-subhead br {
+        display: none;
+    }
+
+    .tile-ctas {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .college-video {
+        width: 100%;
+        height: 68%;
+    }
+
+    .section-promo {
+        padding: 0 8px;
+        gap: 8px;
+    }
+
     .promo-grid-row {
         flex-direction: column;
+        gap: 8px;
     }
-    
+
     .promo-tile {
-        flex: 1 1 100%;
-        height: 480px;
+        flex: 1 1 50%;
+        position: relative;
+        height: 580px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        overflow: hidden;
+        background-repeat: no-repeat;
+        background-position: center bottom;
+        background-size: auto 100%;
+    }
+
+    .promo-tile .logo-image {
+        display: block;
+        visibility: visible;
+        opacity: 1;
     }
 
     .typography-promo-headline {
-        font-size: 32px;
+        font-size: 34px;
     }
 
     .typography-promo-subhead {
         font-size: 17px;
+        padding: 0 16px;
     }
 
+    .hero-iphone,
+    .hero-macbook-air {
+        background-size: auto 76%;
+    }
+
+    .endless-entertainment {
+        padding-top: 30px;
+    }
+    .media-gallery-headline {
+        font-size: 32px;
+    }
+
+    .stream-banner-card {
+        flex-basis: calc(100vw - 32px);
+        height: 400px;
+        border-radius: 12px;
+    }
+
+    .marquee-track {
+        padding: 0 16px;
+    }
+
+    .service-card {
+        flex-basis: calc(100vw - 32px);
+        height: 210px;
+        border-radius: 12px;
+    }
+
+    .marquee-track-services {
+        padding: 0 16px;
+    }
+
+    .stream-banner-overlay {
+        padding: 22px 20px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .stream-banner-text {
+        font-size: 15px;
+    }
+
+    .ac-gf-content {
+        padding: 0 16px;
+    }
+
+    .ac-gf-directory {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px 24px;
+    }
+
+    .ac-gf-footer-legal {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
     .section-hero,
     .hero-bts {
         height: 500px;
     }
 
-    .typography-tile-headline {
-        font-size: 36px;
+    .promo-tile {
+        height: 460px;
     }
 
-    .typography-tile-subhead {
-        font-size: 18px;
+    .hero-iphone,
+    .hero-macbook-air {
+        background-size: auto 66%;
     }
 
-    .globalnav-content {
-        overflow-x: auto;
-        overflow-y: hidden;
-        white-space: nowrap;
-        scrollbar-width: none;
-        padding: 0 10px;
-    }
-    
-    .globalnav-content::-webkit-scrollbar {
-        display: none;
-    }
-
-    .globalnav-list {
-        display: inline-flex;
-        gap: 8px;
-    }
-    
-    .globalnav-link {
-        font-size: 11px;
-        padding: 0 4px;
-    }
-
-    .ac-gf-directory-column {
-        flex: 1 1 45%;
-    }
-}
-
-@media (max-width: 480px) {
-    .service-card {
-        flex: 0 0 280px;
-        height: 200px;
-    }
-
-    .stream-banner-overlay {
-        padding: 20px;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
-    }
-
-    .stream-banner-text {
-        font-size: 16px;
-    }
-
-    .ac-gf-directory-column {
-        flex: 1 1 100%;
+    .ac-gf-directory {
+        grid-template-columns: 1fr;
     }
 }
